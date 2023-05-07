@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -13,7 +13,6 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     const { email, password } = data;
-    debugger;
     try {
       const { data } = await axios.post('/login', {
         email,
@@ -23,12 +22,12 @@ const Login = () => {
         toast.error(data.error);
       }
       else {
-        toast.success(data)
+        toast.success("Logged In")
         setData({});
-        navigate('/');
+        navigate('/dashboard');
       }
     } catch (error) {
-
+      console.log(error);
     }
   }
   return (

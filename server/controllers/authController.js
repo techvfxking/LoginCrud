@@ -72,8 +72,21 @@ const loginUser = async (req, res) => {
     }
 }
 
+const getProfile = async (req, res) => {
+    const { token } = req.cookies;
+    if (token) {
+        Jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+            if (err) throw err;
+            res.json(user);
+        });
+    } else {
+        res.json(null);
+    }
+}
+
 export {
     test,
     registerUser,
-    loginUser
+    loginUser,
+    getProfile
 };

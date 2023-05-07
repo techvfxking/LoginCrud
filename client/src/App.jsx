@@ -8,6 +8,7 @@ import Registration from './pages/Registration';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
+import Dashboard from './pages/Dashboard';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/registration' element={<Registration />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </UserContextProvider>
     </>
